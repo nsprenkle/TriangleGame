@@ -1,0 +1,153 @@
+
+body{
+  background: black;
+  margin: 0;
+}
+
+h1{
+  background: green;
+  margin: 0;
+  text-align: center;
+  color: white;
+  padding: 8px 0;
+}
+
+#titleDisplay{
+  font-size: 150%;
+}
+
+#stripe{
+  background:#4ef84e;
+  height: 30px;
+  margin: 0;
+}
+
+.triangle {
+  // display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 0;
+  height: 0;
+  border-left: 370px solid transparent;
+  border-right: 370px solid transparent;
+  border-bottom: 570px solid tan;
+  position: relative;
+}
+
+
+.wrapper {
+  display: grid;
+  grid-auto-rows: 95px;
+  margin-top: 35px;
+  background-color: green;
+  position: relative;
+  left: -302px;
+}
+
+.container1a{
+  display: flex;
+  left: 440px; 
+  line-height: 25px;
+}
+
+  .container1{
+    display: flex;
+    // position: absolute;
+    // position: relative;
+    margin: 0 auto;
+    // margin: 0 -80px;
+    position: static;
+    line-height: 50px;
+  }
+  .container2{
+    display: flex;
+    // position: relative;
+    margin: 0 auto;
+    line-height: 50px;
+  }
+  .container3{
+    display: flex;
+    // position: relative;
+    margin: 0 auto;
+    line-height: 50px;
+  }
+  .container4{
+    display: flex;
+    // position: relative;
+    margin: 0 auto;
+    line-height: 50px;
+  }
+  .container5{
+    display: flex;
+    // position: relative;
+    margin: 0 auto;
+    line-height: 50px;
+  }
+
+.container1 .circle1 {
+  // margin-left: auto;
+  margin-right: auto;
+  margin-left: 60px;
+  height: 50px;
+  width: 50px;
+  // display: block;
+  border-radius: 50px;
+  background-color: black;
+  // float: left;
+}
+
+.container2 .circle2 {
+  // margin-left: auto;
+  margin-right: auto;
+    margin-left: 60px;
+    height: 50px;
+    width: 50px;
+    display: block;
+    border-radius: 50px;
+   background-color: black;
+    // float: left;
+}
+
+.container3 .circle3 {
+  // margin-left: auto;
+      margin-right: auto;
+      margin-left: 60px;
+      height: 50px;
+      width: 50px;
+      display: block;
+      border-radius: 50px;
+      background-color: black;
+  float: left;
+}
+
+.container4 .circle4 {
+  // margin-left: auto;
+      margin-right: auto;
+      margin-left: 60px;
+      height: 50px;
+      width: 50px;
+      display: block;
+      border-radius: 50px;
+      background-color: black;
+  float: left;
+}
+
+.container5 .circle5 {
+  // margin-left: auto;
+      margin-right: auto;
+      margin-left: 60px;
+      height: 50px;
+      width: 50px;
+      display: block;
+      border-radius: 50px;
+      background-color: black;
+  float: left;
+}
+
+// .centerAlign{
+//   position:absolute;
+//   left:50%;
+//   top:50%;
+//   -webkit-transform:translateX(-50%) translateY(-50%);
+//   transform:translateX(-50%) translateY(-50%);
+// }
