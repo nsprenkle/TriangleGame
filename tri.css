@@ -50,7 +50,7 @@ h1{
   height: 0;
   border-left: 340px solid transparent;
   border-right: 340px solid transparent;
-  border-bottom: 510px solid rgb(250, 180, 90);
+  border-bottom: 510px solid LightGray;
   position: relative;
 }
 
@@ -114,7 +114,7 @@ h1{
     width: 50px;
     display: block;
     border-radius: 50px;
-   background-color: black;
+   background-color: green;
 }
 
 .container3 .circle3 {
@@ -124,7 +124,7 @@ h1{
       width: 50px;
       display: block;
       border-radius: 50px;
-      background-color: black;
+      background-color: green;
   float: left;
 }
 
@@ -135,7 +135,7 @@ h1{
       width: 50px;
       display: block;
       border-radius: 50px;
-      background-color: black;
+      background-color: green;
   float: left;
 }
 
@@ -146,6 +146,6 @@ h1{
   width: 50px;
   display: block;
   border-radius: 50px;
-  background-color: black;
+  background-color: green;
   float: left;
 }
