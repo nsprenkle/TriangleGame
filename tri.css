@@ -17,13 +17,23 @@ h1{
 }
 
 #stripe{
-  background:#4ef84e;
+  background:#1df01d;
   height: 30px;
   margin: 0;
 }
 
+#reset{
+  border: none;
+  background: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  height: 100%;
+  color: white;
+}
+
+
 .triangle {
-  // display: inline-block;
+  /* display: inline-block; */
   margin-left: auto;
   margin-right: auto;
   width: 0;
@@ -52,52 +62,52 @@ h1{
 
   .container1{
     display: flex;
-    // position: absolute;
-    // position: relative;
+    /* position: absolute; */
+    /* position: relative; */
     margin: 0 auto;
-    // margin: 0 -80px;
+    /* margin: 0 -80px; */
     position: static;
     line-height: 50px;
   }
   .container2{
     display: flex;
-    // position: relative;
+    /* // position: relative; */
     margin: 0 auto;
     line-height: 50px;
   }
   .container3{
     display: flex;
-    // position: relative;
+    /* // position: relative; */
     margin: 0 auto;
     line-height: 50px;
   }
   .container4{
     display: flex;
-    // position: relative;
+    /* position: relative; */
     margin: 0 auto;
     line-height: 50px;
   }
   .container5{
     display: flex;
-    // position: relative;
+    /* position: relative; */
     margin: 0 auto;
     line-height: 50px;
   }
 
 .container1 .circle1 {
-  // margin-left: auto;
+  /* margin-left: auto; */
   margin-right: auto;
   margin-left: 60px;
   height: 50px;
   width: 50px;
-  // display: block;
+  /* display: block; */
   border-radius: 50px;
   background-color: black;
-  // float: left;
+  /* float: left; */
 }
 
 .container2 .circle2 {
-  // margin-left: auto;
+  /* // margin-left: auto; */
   margin-right: auto;
     margin-left: 60px;
     height: 50px;
@@ -105,11 +115,11 @@ h1{
     display: block;
     border-radius: 50px;
    background-color: black;
-    // float: left;
+    /* // float: left; */
 }
 
 .container3 .circle3 {
-  // margin-left: auto;
+  /* // margin-left: auto; */
       margin-right: auto;
       margin-left: 60px;
       height: 50px;
@@ -121,7 +131,7 @@ h1{
 }
 
 .container4 .circle4 {
-  // margin-left: auto;
+  /* // margin-left: auto; */
       margin-right: auto;
       margin-left: 60px;
       height: 50px;
@@ -133,7 +143,7 @@ h1{
 }
 
 .container5 .circle5 {
-  // margin-left: auto;
+  /* // margin-left: auto; */
       margin-right: auto;
       margin-left: 60px;
       height: 50px;
@@ -144,10 +154,10 @@ h1{
   float: left;
 }
 
-// .centerAlign{
+/* // .centerAlign{
 //   position:absolute;
 //   left:50%;
 //   top:50%;
 //   -webkit-transform:translateX(-50%) translateY(-50%);
 //   transform:translateX(-50%) translateY(-50%);
-// }
+// } */
