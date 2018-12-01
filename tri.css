@@ -2,6 +2,7 @@
 body{
   background: black;
   margin: 0;
+  font-size: 100%;
 }
 
 h1{
@@ -17,38 +18,47 @@ h1{
 }
 
 #stripe{
-  background:#1df01d;
-  height: 30px;
+  background: black;
+  height: 50px;
   margin: 0;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.btn {
+  display:block;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 6px solid black;
+  margin:0 auto;
+  background-image: url("assets/start.jpg"); 
+  background-repeat:no-repeat;
+  background-size: 140%;
+  background-position: -8px -8px;
 }
 
 #reset{
-  border: none;
-  background: none;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  height: 100%;
-  color: white;
+
 }
 
 
 .triangle {
-  /* display: inline-block; */
   margin-left: auto;
   margin-right: auto;
   width: 0;
   height: 0;
-  border-left: 370px solid transparent;
-  border-right: 370px solid transparent;
-  border-bottom: 570px solid tan;
+  border-left: 340px solid transparent;
+  border-right: 340px solid transparent;
+  border-bottom: 510px solid rgb(250, 180, 90);
   position: relative;
 }
 
 
 .wrapper {
   display: grid;
-  grid-auto-rows: 95px;
-  margin-top: 35px;
+  grid-auto-rows: 85px;
+  margin-top: 30px;
   background-color: green;
   position: relative;
   left: -302px;
@@ -62,52 +72,42 @@ h1{
 
   .container1{
     display: flex;
-    /* position: absolute; */
-    /* position: relative; */
     margin: 0 auto;
-    /* margin: 0 -80px; */
     position: static;
     line-height: 50px;
   }
   .container2{
     display: flex;
-    /* // position: relative; */
     margin: 0 auto;
     line-height: 50px;
   }
   .container3{
     display: flex;
-    /* // position: relative; */
     margin: 0 auto;
     line-height: 50px;
   }
   .container4{
     display: flex;
-    /* position: relative; */
     margin: 0 auto;
     line-height: 50px;
   }
   .container5{
     display: flex;
-    /* position: relative; */
+    position: relative;
     margin: 0 auto;
     line-height: 50px;
   }
 
 .container1 .circle1 {
-  /* margin-left: auto; */
   margin-right: auto;
   margin-left: 60px;
   height: 50px;
   width: 50px;
-  /* display: block; */
   border-radius: 50px;
   background-color: black;
-  /* float: left; */
 }
 
 .container2 .circle2 {
-  /* // margin-left: auto; */
   margin-right: auto;
     margin-left: 60px;
     height: 50px;
@@ -115,11 +115,9 @@ h1{
     display: block;
     border-radius: 50px;
    background-color: black;
-    /* // float: left; */
 }
 
 .container3 .circle3 {
-  /* // margin-left: auto; */
       margin-right: auto;
       margin-left: 60px;
       height: 50px;
@@ -131,7 +129,6 @@ h1{
 }
 
 .container4 .circle4 {
-  /* // margin-left: auto; */
       margin-right: auto;
       margin-left: 60px;
       height: 50px;
@@ -143,21 +140,12 @@ h1{
 }
 
 .container5 .circle5 {
-  /* // margin-left: auto; */
-      margin-right: auto;
-      margin-left: 60px;
-      height: 50px;
-      width: 50px;
-      display: block;
-      border-radius: 50px;
-      background-color: black;
+  margin-right: auto;
+  margin-left: 60px;
+  height: 50px;
+  width: 50px;
+  display: block;
+  border-radius: 50px;
+  background-color: black;
   float: left;
 }
-
-/* // .centerAlign{
-//   position:absolute;
-//   left:50%;
-//   top:50%;
-//   -webkit-transform:translateX(-50%) translateY(-50%);
-//   transform:translateX(-50%) translateY(-50%);
-// } */
