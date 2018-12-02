@@ -7,7 +7,7 @@ Name:  Triangle Game
 This is a Web game application.
 
 It is based on a real game board gift from "Cracker Barrel Old Country Store" given to
- me by a colleague on a business trip.  I loved the game but kept losing pieces in the car and on the plane.  So, I decided to replicate the game electronically.  Below is a picture of the "real game."
+ me by a colleague on a business trip.  I loved the game but kept losing pieces in the car and on the plane.  So, I decided to replicate the game electronically.  Below is a picture of the "real game."</br>
  
 <p align="center">
  <kbd><img width="533" height="400" src="readme_assets/real_game.png"></kbd>
