@@ -12,10 +12,8 @@ It is based on a real game board from "Cracker Barrel Old Country Store" given t
 </p>
 </br>
  
-<p align="left">
+<p align="center">
  <kbd><img width="310" height="210" src="readme_assets/real_game.png"></kbd>
-
-<p align="right">
  <kbd><img width="310" height="210" src="readme_assets/triangle_game.png"></kbd>
 </p>
 </br>
