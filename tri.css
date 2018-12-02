@@ -21,7 +21,6 @@ h1{
   background: black;
   height: 50px;
   margin: 0;
-  text-align: center;
   padding-top: 10px;
 }
 
@@ -51,7 +50,6 @@ h1{
   border-left: 340px solid transparent;
   border-right: 340px solid transparent;
   border-bottom: 510px solid LightGray;
-  position: relative;
 }
 
 
@@ -104,7 +102,9 @@ h1{
   height: 50px;
   width: 50px;
   border-radius: 50px;
-  background-color: black;
+  text-align: center;
+  font-weight: bold;
+  background-color: green;
 }
 
 .container2 .circle2 {
@@ -114,6 +114,8 @@ h1{
     width: 50px;
     display: block;
     border-radius: 50px;
+    text-align: center;
+    font-weight: bold;
    background-color: green;
 }
 
@@ -124,6 +126,8 @@ h1{
       width: 50px;
       display: block;
       border-radius: 50px;
+      text-align: center;
+      font-weight: bold;
       background-color: green;
   float: left;
 }
@@ -135,6 +139,8 @@ h1{
       width: 50px;
       display: block;
       border-radius: 50px;
+      text-align: center;
+      font-weight: bold;
       background-color: green;
   float: left;
 }
@@ -146,6 +152,8 @@ h1{
   width: 50px;
   display: block;
   border-radius: 50px;
+  text-align: center;
+  font-weight: bold;
   background-color: green;
   float: left;
 }
