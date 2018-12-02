@@ -10,7 +10,7 @@ It is based on a real game board gift from "Cracker Barrel Old Country Store" gi
  me by a colleague on a business trip.  I loved the game but kept losing pieces in the car and on the plane.  So, I decided to replicate the game electronically.  Below is a picture of the "real game."
  
 <p align="center">
- <kbd><img width="300" height="533" src="readme_assets/trianglegame.gif"></kbd>
+ <kbd><img width="300" height="533" src="readme_assets/real_game.png"></kbd>
 
 ## Code Description
 
