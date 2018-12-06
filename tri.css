@@ -1,10 +1,10 @@
-body{
+body {
   background: black;
   margin: 0;
   font-size: 100%;
 }
 
-h1{
+h1 {
   background: green;
   margin: 0;
   text-align: center;
@@ -12,11 +12,11 @@ h1{
   padding: 8px 0;
 }
 
-#titleDisplay{
+#titleDisplay {
   font-size: 150%;
 }
 
-#stripe{
+#stripe {
   background: black;
   height: 50px;
   margin: 0;
@@ -24,24 +24,35 @@ h1{
 }
 
 .btn {
-  display:block;
+  display: block;
   height: 50px;
   width: 50px;
   border-radius: 50%;
   border: 6px solid black;
-  margin:0 auto;
-  background-image: url("assets/start.jpg"); 
-  background-repeat:no-repeat;
+  margin: 0 auto;
+  background-image: url("assets/start.jpg");
+  background-repeat: no-repeat;
   background-size: 140%;
   background-position: -8px -8px;
 }
 
-#reset{
+#reset {}
 
-}
-
-#one:hover, #two:hover, #three:hover, #four:hover, #five:hover, #six:hover, #seven:hover, #eight:hover, #nine:hover,
-#ten:hover, #eleven:hover, #twelve:hover, #thirteen:hover, #fourteen:hover, #fifteen:hover { 
+#one:hover,
+#two:hover,
+#three:hover,
+#four:hover,
+#five:hover,
+#six:hover,
+#seven:hover,
+#eight:hover,
+#nine:hover,
+#ten:hover,
+#eleven:hover,
+#twelve:hover,
+#thirteen:hover,
+#fourteen:hover,
+#fifteen:hover {
   color: white;
 }
 
@@ -66,39 +77,43 @@ h1{
   left: -302px;
 }
 
-.container1a{
+.container1a {
   display: flex;
-  left: 440px; 
+  left: 440px;
   line-height: 25px;
 }
 
-  .container1{
-    display: flex;
-    margin: 0 auto;
-    position: static;
-    line-height: 50px;
-  }
-  .container2{
-    display: flex;
-    margin: 0 auto;
-    line-height: 50px;
-  }
-  .container3{
-    display: flex;
-    margin: 0 auto;
-    line-height: 50px;
-  }
-  .container4{
-    display: flex;
-    margin: 0 auto;
-    line-height: 50px;
-  }
-  .container5{
-    display: flex;
-    position: relative;
-    margin: 0 auto;
-    line-height: 50px;
-  }
+.container1 {
+  display: flex;
+  margin: 0 auto;
+  position: static;
+  line-height: 50px;
+}
+
+.container2 {
+  display: flex;
+  margin: 0 auto;
+  line-height: 50px;
+}
+
+.container3 {
+  display: flex;
+  margin: 0 auto;
+  line-height: 50px;
+}
+
+.container4 {
+  display: flex;
+  margin: 0 auto;
+  line-height: 50px;
+}
+
+.container5 {
+  display: flex;
+  position: relative;
+  margin: 0 auto;
+  line-height: 50px;
+}
 
 .container1 .circle {
   margin-right: auto;
@@ -114,42 +129,42 @@ h1{
 
 .container2 .circle {
   margin-right: auto;
-    margin-left: 60px;
-    height: 50px;
-    width: 50px;
-    display: block;
-    border-radius: 50px;
-    text-align: center;
-    font-weight: bold;
-    font-size: 150%;
-   background-color: green;
+  margin-left: 60px;
+  height: 50px;
+  width: 50px;
+  display: block;
+  border-radius: 50px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 150%;
+  background-color: green;
 }
 
 .container3 .circle {
-      margin-right: auto;
-      margin-left: 60px;
-      height: 50px;
-      width: 50px;
-      display: block;
-      border-radius: 50px;
-      text-align: center;
-      font-weight: bold;
-      font-size: 150%;
-      background-color: green;
+  margin-right: auto;
+  margin-left: 60px;
+  height: 50px;
+  width: 50px;
+  display: block;
+  border-radius: 50px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 150%;
+  background-color: green;
   float: left;
 }
 
 .container4 .circle {
-      margin-right: auto;
-      margin-left: 60px;
-      height: 50px;
-      width: 50px;
-      display: block;
-      border-radius: 50px;
-      text-align: center;
-      font-weight: bold;
-      font-size: 150%;
-      background-color: green;
+  margin-right: auto;
+  margin-left: 60px;
+  height: 50px;
+  width: 50px;
+  display: block;
+  border-radius: 50px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 150%;
+  background-color: green;
   float: left;
 }
 
