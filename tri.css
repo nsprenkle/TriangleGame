@@ -36,7 +36,6 @@ h1 {
   background-position: -8px -8px;
 }
 
-#reset {}
 
 #one:hover,
 #two:hover,
@@ -83,51 +82,13 @@ h1 {
   line-height: 25px;
 }
 
-.container1 {
-  display: flex;
-  margin: 0 auto;
-  position: static;
-  line-height: 50px;
-}
-
-.container2 {
+.container1, .container2, .container3, .container4, .container5 {
   display: flex;
   margin: 0 auto;
   line-height: 50px;
 }
 
-.container3 {
-  display: flex;
-  margin: 0 auto;
-  line-height: 50px;
-}
-
-.container4 {
-  display: flex;
-  margin: 0 auto;
-  line-height: 50px;
-}
-
-.container5 {
-  display: flex;
-  position: relative;
-  margin: 0 auto;
-  line-height: 50px;
-}
-
-.container1 .circle {
-  margin-right: auto;
-  margin-left: 60px;
-  height: 50px;
-  width: 50px;
-  border-radius: 50px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 150%;
-  background-color: green;
-}
-
-.container2 .circle {
+.container1 .circle, .container2 .circle, .container3 .circle, .container4 .circle, .container5 .circle {
   margin-right: auto;
   margin-left: 60px;
   height: 50px;
@@ -138,46 +99,4 @@ h1 {
   font-weight: bold;
   font-size: 150%;
   background-color: green;
-}
-
-.container3 .circle {
-  margin-right: auto;
-  margin-left: 60px;
-  height: 50px;
-  width: 50px;
-  display: block;
-  border-radius: 50px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 150%;
-  background-color: green;
-  float: left;
-}
-
-.container4 .circle {
-  margin-right: auto;
-  margin-left: 60px;
-  height: 50px;
-  width: 50px;
-  display: block;
-  border-radius: 50px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 150%;
-  background-color: green;
-  float: left;
-}
-
-.container5 .circle {
-  margin-right: auto;
-  margin-left: 60px;
-  height: 50px;
-  width: 50px;
-  display: block;
-  border-radius: 50px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 150%;
-  background-color: green;
-  float: left;
 }
