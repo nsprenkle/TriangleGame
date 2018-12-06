@@ -11,9 +11,10 @@ var allCircles = document.querySelectorAll(".circle");
 //start - reset toggle button
 resetButton.addEventListener("click", function () {
    if (circleColorOne === "green") {
+      //function to start game
       startGame();
-   }
-   else {
+   } else {
+      //function to reset all circles to green
       resetCircles();
    }
 });
@@ -41,7 +42,7 @@ function resetCircles() {
    circleColorOne = "green";
 }
 
-// function to change circle color
+// function to change circle color to white onclick if game started
 function selectCircle(elem) {
    //onclick only if game is started
    if (circleColorOne === "black") {
