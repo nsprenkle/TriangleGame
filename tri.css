@@ -1,4 +1,3 @@
-
 body{
   background: black;
   margin: 0;
@@ -39,6 +38,11 @@ h1{
 
 #reset{
 
+}
+
+#one:hover, #two:hover, #three:hover, #four:hover, #five:hover, #six:hover, #seven:hover, #eight:hover, #nine:hover,
+#ten:hover, #eleven:hover, #twelve:hover, #thirteen:hover, #fourteen:hover, #fifteen:hover { 
+  color: white;
 }
 
 
@@ -96,7 +100,7 @@ h1{
     line-height: 50px;
   }
 
-.container1 .circle1 {
+.container1 .circle {
   margin-right: auto;
   margin-left: 60px;
   height: 50px;
@@ -104,10 +108,11 @@ h1{
   border-radius: 50px;
   text-align: center;
   font-weight: bold;
+  font-size: 150%;
   background-color: green;
 }
 
-.container2 .circle2 {
+.container2 .circle {
   margin-right: auto;
     margin-left: 60px;
     height: 50px;
@@ -116,10 +121,11 @@ h1{
     border-radius: 50px;
     text-align: center;
     font-weight: bold;
+    font-size: 150%;
    background-color: green;
 }
 
-.container3 .circle3 {
+.container3 .circle {
       margin-right: auto;
       margin-left: 60px;
       height: 50px;
@@ -128,11 +134,12 @@ h1{
       border-radius: 50px;
       text-align: center;
       font-weight: bold;
+      font-size: 150%;
       background-color: green;
   float: left;
 }
 
-.container4 .circle4 {
+.container4 .circle {
       margin-right: auto;
       margin-left: 60px;
       height: 50px;
@@ -141,11 +148,12 @@ h1{
       border-radius: 50px;
       text-align: center;
       font-weight: bold;
+      font-size: 150%;
       background-color: green;
   float: left;
 }
 
-.container5 .circle5 {
+.container5 .circle {
   margin-right: auto;
   margin-left: 60px;
   height: 50px;
@@ -154,6 +162,7 @@ h1{
   border-radius: 50px;
   text-align: center;
   font-weight: bold;
+  font-size: 150%;
   background-color: green;
   float: left;
 }
