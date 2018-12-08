@@ -37,21 +37,7 @@ h1 {
 }
 
 
-#one:hover,
-#two:hover,
-#three:hover,
-#four:hover,
-#five:hover,
-#six:hover,
-#seven:hover,
-#eight:hover,
-#nine:hover,
-#ten:hover,
-#eleven:hover,
-#twelve:hover,
-#thirteen:hover,
-#fourteen:hover,
-#fifteen:hover {
+.circle:hover{
   color: white;
 }
 
@@ -82,13 +68,17 @@ h1 {
   line-height: 25px;
 }
 
-.container1, .container2, .container3, .container4, .container5 {
+.container1,
+.container2,
+.container3,
+.container4,
+.container5 {
   display: flex;
   margin: 0 auto;
   line-height: 50px;
 }
 
-.container1 .circle, .container2 .circle, .container3 .circle, .container4 .circle, .container5 .circle {
+.circle {
   margin-right: auto;
   margin-left: 60px;
   height: 50px;
