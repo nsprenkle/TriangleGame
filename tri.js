@@ -43,14 +43,21 @@ function resetCircles() {
 }
 
 // function to change circle color to white onclick if game started
-function selectCircle(elem) {
-   //onclick only if game is started
-   if (circleColorOne === "black") {
-      var x = elem.id
-      if (document.getElementById(x).style.backgroundColor === 'green') {
-         document.getElementById(x).style.backgroundColor = 'white';
-      } else {
-         document.getElementById(x).style.backgroundColor = 'green';
-      }
+  window.onload = function() {
+       var anchors = document.getElementsByClassName("circle");
+         for(var i = 0; i < anchors.length; i++) {
+          var anchor = anchors[i];
+            anchor.onclick = function() {
+               var x = this.id;
+                //onclick only if game is started
+               if (circleColorOne === "black") {
+                  if (document.getElementById(x).style.backgroundColor === 'green') {
+                     document.getElementById(x).style.backgroundColor = 'white';
+                  }
+                  else {
+                     document.getElementById(x).style.backgroundColor = 'green';
+                  }
+               }
+            }
+         }
    }
-}
