@@ -1,58 +1,62 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Triangle Game</title>
-    <link rel="stylesheet" type="text/css" href="tri.css">
-  </head>
-  <body>
-      
-    <h1>The <span id="titleDisplay">Triangle</span> Game</h1>
 
-    <div id="stripe">
-      <button class="btn" id="reset"></button>
-    </div>
+<head>
+  <meta charset="UTF-8">
+  <title>Triangle Game</title>
+  <link rel="stylesheet" type="text/css" href="tri.css">
+</head>
+
+<body>
+
+  <h1>The <span id="titleDisplay">Triangle</span> Game</h1>
+
+  <div id="stripe">
+    <button class="btn" id="reset"></button>
+  </div>
 
 
-    <div class="triangle">
-  
+  <div class="triangle">
+
     <div class="wrapper">
 
-    <div class="container1a" ></div>
+      <div class="row" id="row-1a"></div>
 
-    <div class="container1" >
-         <div class="circle1" id="one">1</div>
-    </div>
-   
-    <div class="container2" >
-         <div class="circle2" id="two">2</div>
-         <div class="circle2" id="three">3</div>
-    </div>
-     
-    <div class="container3" >
-        <div class="circle3" id="four">4</div>
-        <div class="circle3" id="five">5</div>
-        <div class="circle3" id="six">6</div>
-      </div>
-  
-      <div class="container4" >
-          <div class="circle4" id="seven">7</div>
-          <div class="circle4" id="eight">8</div>
-          <div class="circle4" id="nine">9</div>
-          <div class="circle4" id="ten">10</div>
+          <div class="row" id="row-1">
+        <div class="circle" id="one">1</div>
       </div>
 
-      <div class="container5" >
-            <div class="circle5" id="eleven">11</div>
-            <div class="circle5" id="twelve">12</div>
-            <div class="circle5" id="thirteen">13</div>
-            <div class="circle5" id="fourteen">14</div>
-            <div class="circle5" id="fifteen">15</div>
-     </div> 
+     <div class="row" id="row-2">
+        <div class="circle" id="two">2</div>
+        <div class="circle" id="three">3</div>
+      </div>
+
+
+      <div class="row" id="row-3">
+        <div class="circle" id="four">4</div>
+        <div class="circle" id="five">5</div>
+        <div class="circle" id="six">6</div>
+      </div>
+
+        <div class="row" id="row-4">
+        <div class="circle" id="seven">7</div>
+        <div class="circle" id="eight">8</div>
+        <div class="circle" id="nine">9</div>
+        <div class="circle" id="ten">10</div>
+      </div>
+
+        <div class="row" id="row-5">
+        <div class="circle" id="eleven">11</div>
+        <div class="circle" id="twelve">12</div>
+        <div class="circle" id="thirteen">13</div>
+        <div class="circle" id="fourteen">14</div>
+        <div class="circle" id="fifteen">15</div>
+      </div>
 
     </div>
-    
-    </div>
-    <script type="text/javascript" src="tri.js"></script>
-  </body>
+
+  </div>
+  <script type="text/javascript" src="tri.js"></script>
+</body>
+
 </html>
