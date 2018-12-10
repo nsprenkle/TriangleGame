@@ -1,7 +1,7 @@
 /* Triangle Game Javascript */
 
 // variables
-var circleColorOne = "green";
+let gameStarted = false;
 var circleArrayGreen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 var circleArrayBlack = [];
 var resetButton = document.querySelector("#reset");
@@ -10,7 +10,7 @@ var allCircles = document.querySelectorAll(".circle");
 
 //start - reset toggle button
 resetButton.addEventListener("click", function () {
-   if (circleColorOne === "green") {
+   if (!gameStarted) {
       //function to start game
       startGame();
    } else {
@@ -22,7 +22,7 @@ resetButton.addEventListener("click", function () {
 //function to start game
 function startGame() {
    circleOne.style.backgroundColor = "black";
-   circleColorOne = "black";
+   gameStarted = true;
    //remove circle 1 from the active array
    delete circleArrayGreen[0];
    //add circle 1 to inactive array
@@ -35,25 +35,24 @@ function resetCircles() {
    for (i = 0; i < allCircles.length; i++) {
       allCircles[i].style.backgroundColor = "green";
    }
-
    //reset array contents to start
    circleArrayGreen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
    circleArrayBlack = [];
-   circleColorOne = "green";
+   gameStarted = false;
 }
 
 // function to change circle color to white onclick if game started
 window.onload = function () {
    var anchors = document.getElementsByClassName("circle");
-   for (var i = 0; i < anchors.length; i++) {
+   for (var i = 1; i < anchors.length; i++) {
       var anchor = anchors[i];
       anchor.onclick = function () {
          var x = this.id;
          //onclick only if game is started
-         if (circleColorOne === "black") {
+         if (gameStarted) {
             if (document.getElementById(x).style.backgroundColor === 'green') {
                document.getElementById(x).style.backgroundColor = 'white';
-            } else {
+            } else if (document.getElementById(x).style.backgroundColor === 'black') {
                document.getElementById(x).style.backgroundColor = 'green';
             }
          }
