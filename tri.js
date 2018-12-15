@@ -4,18 +4,53 @@ class Game {
   }
 
   reset () {
+    this.spaces = [[1], [2, 3], [4, 5, 6], [7, 8, 9, 10], [11, 12, 13, 14, 15]]
     this.board = [[1], [2, 3], [4, 5, 6], [7, 8, 9, 10], [11, 12, 13, 14, 15]]
   }
 
-  move (startPiece, endPiece) {
+  getPieceAtSpace (space) {
+    let coordinates = this.getCoordinatesForSpace(space)
+    return this.board[coordinates.row][coordinates.column]
+  }
+
+  /** Maps between a space number and the row/column indecies
+   * @param space {number} number 1-15 from the top point of the triangle down and left to right as below
+   *
+   *       [1],
+   *      [2, 3],
+   *     [4, 5, 6],
+   *   [7, 8, 9, 10],
+   * [11, 12, 13, 14, 15]
+   *
+   * Rows/columns are 0 indexed and similarly flow top to bottom and left to right
+   *
+   * @returns object with row and col properties
+   * @example   getCoordinatesForSpace(1) == { row: 0, col:0 }
+   * @example   getCoordinatesForSpace(15) == { row: 4, col: 4 }
+   */
+  getCoordinatesForSpace (space) {
+    let row = this.spaces.findIndex((row, i) => {
+      return row.indexOf(space) !== -1
+    })
+    let column = this.spaces[row].indexOf(space)
+
+    return { row, column }
+  }
+
+  getSpaceForCoordinates (coordinates) {
+    return this.spaces[coordinates.row][coordinates.column]
+  }
+
+  move (startSpace, endSpace) {
     // Valid move if...
     let valid = false
     let jumpedPiece = {}
 
-    const rowDelta = endPiece.row - startPiece.row
-    const columnDelta = endPiece.column - startPiece.column
+    const start = this.getCoordinatesForSpace(startSpace)
+    const end = this.getCoordinatesForSpace(endSpace)
 
-    console.log(`Row Delta: ${rowDelta}\tColumn Delta: ${columnDelta}`)
+    const rowDelta = end.row - start.row
+    const columnDelta = end.column - start.column
 
     // In the same row but difference of exactly 2
     valid = valid || (rowDelta === 0 && Math.abs(columnDelta) === 2)
@@ -26,32 +61,36 @@ class Game {
     if (!valid) { console.error('Invalid move: bad row/column'); return false }
 
     // There is a piece in the starting spot
-    valid = valid && (this.board[startPiece.row][startPiece.column] != null)
+    valid = valid && (this.board[start.row][start.column] != null)
     if (!valid) { console.error('Invalid move: no piece at start location'); return false }
 
     // There is no piece in the ending spot
-    valid = valid && (this.board[endPiece.row][endPiece.column] == null)
+    valid = valid && (this.board[end.row][end.column] == null)
     if (!valid) { console.error('Invalid move: piece at end location'); return false }
 
-    // Find jumped piece
+    // Find and remove jumped piece
     if (rowDelta === 0) {
-      jumpedPiece.row = startPiece.row
-      jumpedPiece.column = (columnDelta / 2) + startPiece.column
+      jumpedPiece.row = start.row
+      jumpedPiece.column = (columnDelta / 2) + start.column
     } else {
-      jumpedPiece.row = (rowDelta / 2) + startPiece.row
-      jumpedPiece.column = (columnDelta / 2) + startPiece.column
+      jumpedPiece.row = (rowDelta / 2) + start.row
+      jumpedPiece.column = (columnDelta / 2) + start.column
     }
 
-    // There must be a piece getting jumped
-    if (!this.remove(jumpedPiece)) { return false }
+    if (!this.remove(this.getSpaceForCoordinates(jumpedPiece))) { return false }
+
+    // Remove the piece in the starting position
+    this.remove(startSpace)
 
     return valid
   }
 
   /** Removes a piece from the board
-           * @returns whether or not a piece existed in the spot before and could be removed
-           */
+   * @returns whether or not a piece existed in the spot before and could be removed
+   */
   remove (piece) {
+    piece = this.getCoordinatesForSpace(piece)
+
     if (this.board[piece.row][piece.column] == null) {
       console.error('Invalid remove: no piece to remove')
       return false

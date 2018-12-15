@@ -8,11 +8,7 @@ const startingBoard = [
   [11, 12, 13, 14, 15]
 ]
 
-let game
-
-beforeAll(() => {
-  game = new Game()
-})
+let game = new Game()
 
 beforeEach(() => {
   game.reset()
@@ -23,82 +19,90 @@ test('Can cretate game board', () => {
 })
 
 describe('Move', () => {
-  let piece1 = { row: 0, column: 0 }
-  let piece4 = { row: 2, column: 0 }
-  let piece5 = { row: 2, column: 1 }
-  let piece6 = { row: 2, column: 2 }
-  let piece7 = { row: 3, column: 0 }
-  let piece8 = { row: 3, column: 1 }
-  let piece10 = { row: 3, column: 3 }
-  let piece12 = { row: 4, column: 1 }
-  let piece14 = { row: 4, column: 3 }
-
   it('Can jump in same row, left to right', () => {
-    game.remove(piece6)
-    expect(game.move(piece4, piece6)).toBeTruthy()
+    game.remove(6)
+    expect(game.move(4, 6)).toBeTruthy()
+    expect(game.getPieceAtSpace(4)).toBeNull()
+    expect(game.getPieceAtSpace(5)).toBeNull()
   })
 
   it('Can jump in same row, right to left', () => {
-    game.remove(piece4)
-    expect(game.move(piece6, piece4)).toBeTruthy()
+    game.remove(12)
+    expect(game.move(14, 12)).toBeTruthy()
   })
 
   it('Can jump across rows, top to bottom', () => {
-    game.remove(piece12)
-    expect(game.move(piece5, piece12)).toBeTruthy()
+    game.remove(12)
+    expect(game.move(5, 12)).toBeTruthy()
   })
 
   it('Can jump across rows, bottom to top', () => {
-    game.remove(piece5)
-    expect(game.move(piece12, piece5)).toBeTruthy()
+    game.remove(5)
+    expect(game.move(12, 5)).toBeTruthy()
 
-    game.remove(piece5)
-    expect(game.move(piece14, piece5)).toBeTruthy()
+    game.remove(5)
+    expect(game.move(14, 5)).toBeTruthy()
   })
 
   it('Cannot jump a bad number of columns', () => {
-    game.remove(piece5)
-    expect(game.move(piece4, piece5)).toBeFalsy()
+    game.remove(5)
+    expect(game.move(4, 5)).toBeFalsy()
   })
 
   it('Cannot jump a bad number of rows', () => {
-    game.remove(piece10)
-    expect(game.move(piece5, piece10)).toBeFalsy()
+    game.remove(10)
+    expect(game.move(5, 10)).toBeFalsy()
 
-    game.remove(piece7)
-    expect(game.move(piece1, piece7)).toBeFalsy()
+    game.remove(7)
+    expect(game.move(1, 7)).toBeFalsy()
   })
 
   it('Cannot jump with a piece in the end position', () => {
-    expect(game.move(piece12, piece5)).toBeFalsy()
+    expect(game.move(12, 5)).toBeFalsy()
   })
 
   it('Cannot jump without a piece in the start position', () => {
-    game.remove(piece6) // remove piece in start position
-    game.remove(piece4)
-    expect(game.move(piece6, piece4)).toBeFalsy()
+    game.remove(6) // remove piece in start position
+    game.remove(4)
+    expect(game.move(6, 4)).toBeFalsy()
   })
 
   it('Cannot jump in same row without a piece in between', () => {
-    game.remove(piece5) // remove jumped piece
-    game.remove(piece4)
-    expect(game.move(piece6, piece4)).toBeFalsy()
+    game.remove(5) // remove jumped piece
+    game.remove(4)
+    expect(game.move(6, 4)).toBeFalsy()
   })
 
   it('Cannot jump across row without a piece in between', () => {
-    game.remove(piece8) // remove jumped piece
-    game.remove(piece12)
-    expect(game.move(piece5, piece12)).toBeFalsy()
+    game.remove(8) // remove jumped piece
+    game.remove(12)
+    expect(game.move(5, 12)).toBeFalsy()
   })
 })
 
 test('Remove takes a piece from the board', () => {
-  expect(game.remove({ row: 0, column: 0 })).toBeTruthy()
-  expect(game.board[0][0]).toBeNull()
-
-  // Shouldn't affect other pieces
-  expect(game.board[1][0]).not.toBeNull()
+  expect(game.getPieceAtSpace(1)).not.toBeNull()
+  expect(game.remove(1)).toBeTruthy()
+  expect(game.getPieceAtSpace(1)).toBeNull()
 
   // Can't remove a piece that already is removed
-  expect(game.remove({ row: 0, column: 0 })).toBeFalsy()
+  expect(game.remove(1)).toBeFalsy()
+})
+
+test('Get coordinates by space', () => {
+  expect(game.getCoordinatesForSpace(1)).toEqual({ row: 0, column: 0 })
+  expect(game.getCoordinatesForSpace(2)).toEqual({ row: 1, column: 0 })
+  expect(game.getCoordinatesForSpace(3)).toEqual({ row: 1, column: 1 })
+  expect(game.getCoordinatesForSpace(4)).toEqual({ row: 2, column: 0 })
+  expect(game.getCoordinatesForSpace(5)).toEqual({ row: 2, column: 1 })
+  expect(game.getCoordinatesForSpace(6)).toEqual({ row: 2, column: 2 })
+  expect(game.getCoordinatesForSpace(7)).toEqual({ row: 3, column: 0 })
+  expect(game.getCoordinatesForSpace(8)).toEqual({ row: 3, column: 1 })
+  expect(game.getCoordinatesForSpace(9)).toEqual({ row: 3, column: 2 })
+  expect(game.getCoordinatesForSpace(10)).toEqual({ row: 3, column: 3 })
+  expect(game.getCoordinatesForSpace(11)).toEqual({ row: 4, column: 0 })
+  expect(game.getCoordinatesForSpace(12)).toEqual({ row: 4, column: 1 })
+  expect(game.getCoordinatesForSpace(13)).toEqual({ row: 4, column: 2 })
+  expect(game.getCoordinatesForSpace(14)).toEqual({ row: 4, column: 3 })
+  expect(game.getCoordinatesForSpace(15)).toEqual({ row: 4, column: 4 })
 })
