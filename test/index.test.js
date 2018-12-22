@@ -1,8 +1,5 @@
-import uut from '../src/index'
-import $ from 'jquery'
-
-// let uut = require('../src/index')
-// const $ = require('jquery')
+const uut = require('../src/index')
+const $ = require('jquery')
 
 document.body.innerHTML =
   `<div class="row" data-row=1>

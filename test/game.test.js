@@ -1,4 +1,3 @@
-// import Game from '../src/game.js';
 const Game = require('../src/game.js')
 
 const startingBoard = [

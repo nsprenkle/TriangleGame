@@ -1,7 +1,3 @@
-
-// import Game from './game.mjs'
-// import $ from 'jquery'
-
 let Game = require('./game.js')
 let $ = require('jquery')
 
@@ -62,4 +58,3 @@ function clearSelection () {
 }
 
 module.exports = { selectPiece, move, drawBoard }
-// export default { selectPiece, move, drawBoard }
