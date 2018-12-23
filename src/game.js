@@ -1,3 +1,5 @@
+const movesets = require('./movesets')
+
 class Game {
   constructor () {
     this.reset()
@@ -40,48 +42,48 @@ class Game {
   }
 
   move (startSpace, endSpace) {
-    // Valid move if...
-    let valid = false
-    let jumpedPiece = {}
-
-    const start = this.getCoordinatesForSpace(startSpace)
-    const end = this.getCoordinatesForSpace(endSpace)
-
-    const rowDelta = end.row - start.row
-    const columnDelta = end.column - start.column
-
-    // In the same row but difference of exactly 2
-    valid = valid || (rowDelta === 0 && Math.abs(columnDelta) === 2)
-
-    // 2 rows away with an offset of 0 or 2 columns
-    valid = valid || (Math.abs(rowDelta) === 2 && (columnDelta === 0 || Math.abs(columnDelta) === 2))
-
-    if (!valid) { console.error('Invalid move: bad row/column'); return false }
-
-    // There is a piece in the starting spot
-    valid = valid && (this.board[start.row][start.column] != null)
-    if (!valid) { console.error('Invalid move: no piece at start location'); return false }
-
-    // There is no piece in the ending spot
-    valid = valid && (this.board[end.row][end.column] == null)
-    if (!valid) { console.error('Invalid move: piece at end location'); return false }
-
-    // Find and remove jumped piece
-    if (rowDelta === 0) {
-      jumpedPiece.row = start.row
-      jumpedPiece.column = (columnDelta / 2) + start.column
-    } else {
-      jumpedPiece.row = (rowDelta / 2) + start.row
-      jumpedPiece.column = (columnDelta / 2) + start.column
+    // Start piece should exist
+    if (!this.getPieceAtSpace(startSpace)) {
+      console.error('Invalid move: no start piece')
+      return false
     }
 
-    if (!this.remove(this.getSpaceForCoordinates(jumpedPiece))) { return false }
+    // End piece should not exist
+    if (this.getPieceAtSpace(endSpace)) {
+      console.error('Invalid move: end space occupied')
+      return false
+    }
+
+    // Find valid moves from start space
+    console.log(`Moves for start space: ${movesets[startSpace]}`)
+    const validMove = movesets[startSpace].find(move => {
+      console.log(`move.end ${move.end}, endSpace ${endSpace}`)
+      return move.end === endSpace
+    })
+
+    // End space should be a valid move from start
+    if (validMove == null) {
+      console.error('Invalid move: invalid end space')
+      return false
+    }
+
+    console.log(`Found valid move: ${startSpace} to ${endSpace}, jumping ${validMove.jump}`)
+
+    // Jump piece should exist
+    if (!this.getPieceAtSpace(validMove.jump)) {
+      console.error('Invalid move: no jump piece')
+      return false
+    }
 
     // Move the start piece to the end piece
+    const end = this.getCoordinatesForSpace(endSpace)
+    const start = this.getCoordinatesForSpace(startSpace)
+
     this.board[end.row][end.column] = this.board[start.row][start.column]
     this.remove(startSpace)
+    this.remove(validMove.jump)
 
-    return valid
+    return true
   }
 
   /** Removes a piece from the board

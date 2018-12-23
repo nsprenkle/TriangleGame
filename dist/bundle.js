@@ -10365,6 +10365,8 @@ return jQuery;
 } );
 
 },{}],2:[function(require,module,exports){
+const movesets = require('./movesets')
+
 class Game {
   constructor () {
     this.reset()
@@ -10407,48 +10409,48 @@ class Game {
   }
 
   move (startSpace, endSpace) {
-    // Valid move if...
-    let valid = false
-    let jumpedPiece = {}
-
-    const start = this.getCoordinatesForSpace(startSpace)
-    const end = this.getCoordinatesForSpace(endSpace)
-
-    const rowDelta = end.row - start.row
-    const columnDelta = end.column - start.column
-
-    // In the same row but difference of exactly 2
-    valid = valid || (rowDelta === 0 && Math.abs(columnDelta) === 2)
-
-    // 2 rows away with an offset of 0 or 2 columns
-    valid = valid || (Math.abs(rowDelta) === 2 && (columnDelta === 0 || Math.abs(columnDelta) === 2))
-
-    if (!valid) { console.error('Invalid move: bad row/column'); return false }
-
-    // There is a piece in the starting spot
-    valid = valid && (this.board[start.row][start.column] != null)
-    if (!valid) { console.error('Invalid move: no piece at start location'); return false }
-
-    // There is no piece in the ending spot
-    valid = valid && (this.board[end.row][end.column] == null)
-    if (!valid) { console.error('Invalid move: piece at end location'); return false }
-
-    // Find and remove jumped piece
-    if (rowDelta === 0) {
-      jumpedPiece.row = start.row
-      jumpedPiece.column = (columnDelta / 2) + start.column
-    } else {
-      jumpedPiece.row = (rowDelta / 2) + start.row
-      jumpedPiece.column = (columnDelta / 2) + start.column
+    // Start piece should exist
+    if (!this.getPieceAtSpace(startSpace)) {
+      console.error('Invalid move: no start piece')
+      return false
     }
 
-    if (!this.remove(this.getSpaceForCoordinates(jumpedPiece))) { return false }
+    // End piece should not exist
+    if (this.getPieceAtSpace(endSpace)) {
+      console.error('Invalid move: end space occupied')
+      return false
+    }
+
+    // Find valid moves from start space
+    console.log(`Moves for start space: ${movesets[startSpace]}`)
+    const validMove = movesets[startSpace].find(move => {
+      console.log(`move.end ${move.end}, endSpace ${endSpace}`)
+      return move.end === endSpace
+    })
+
+    // End space should be a valid move from start
+    if (validMove == null) {
+      console.error('Invalid move: invalid end space')
+      return false
+    }
+
+    console.log(`Found valid move: ${startSpace} to ${endSpace}, jumping ${validMove.jump}`)
+
+    // Jump piece should exist
+    if (!this.getPieceAtSpace(validMove.jump)) {
+      console.error('Invalid move: no jump piece')
+      return false
+    }
 
     // Move the start piece to the end piece
+    const end = this.getCoordinatesForSpace(endSpace)
+    const start = this.getCoordinatesForSpace(startSpace)
+
     this.board[end.row][end.column] = this.board[start.row][start.column]
     this.remove(startSpace)
+    this.remove(validMove.jump)
 
-    return valid
+    return true
   }
 
   /** Removes a piece from the board
@@ -10468,13 +10470,8 @@ class Game {
 }
 
 module.exports = Game
-// export default Game
 
-},{}],3:[function(require,module,exports){
-
-// import Game from './game.mjs'
-// import $ from 'jquery'
-
+},{"./movesets":4}],3:[function(require,module,exports){
 let Game = require('./game.js')
 let $ = require('jquery')
 
@@ -10535,6 +10532,24 @@ function clearSelection () {
 }
 
 module.exports = { selectPiece, move, drawBoard }
-// export default { selectPiece, move, drawBoard }
 
-},{"./game.js":2,"jquery":1}]},{},[3]);
+},{"./game.js":2,"jquery":1}],4:[function(require,module,exports){
+module.exports = {
+  1: [{ jump: 2, end: 4 }, { jump: 3, end: 6 }],
+  2: [{ jump: 4, end: 7 }, { jump: 5, end: 9 }],
+  3: [{ jump: 5, end: 8 }, { jump: 6, end: 10 }],
+  4: [{ jump: 2, end: 1 }, { jump: 5, end: 6 }, { jump: 7, end: 11 }, { jump: 8, end: 13 }],
+  5: [{ jump: 8, end: 12 }, { jump: 9, end: 14 }],
+  6: [{ jump: 3, end: 1 }, { jump: 5, end: 4 }, { jump: 9, end: 13 }, { jump: 10, end: 15 }],
+  7: [{ jump: 4, end: 2 }, { jump: 8, end: 9 }],
+  8: [{ jump: 5, end: 3 }, { jump: 9, end: 10 }],
+  9: [{ jump: 5, end: 2 }, { jump: 8, end: 7 }],
+  10: [{ jump: 6, end: 3 }, { jump: 9, end: 8 }],
+  11: [{ jump: 7, end: 4 }, { jump: 12, end: 13 }],
+  12: [{ jump: 8, end: 5 }, { jump: 13, end: 14 }],
+  13: [{ jump: 8, end: 4 }, { jump: 9, end: 6 }],
+  14: [{ jump: 9, end: 5 }, { jump: 13, end: 12 }],
+  15: [{ jump: 10, end: 6 }, { jump: 14, end: 13 }]
+}
+
+},{}]},{},[3]);
