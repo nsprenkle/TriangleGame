@@ -5,12 +5,11 @@ let game = new Game()
 drawBoard()
 
 function drawBoard () {
-  let rows = $('.row')
+  let spaces = $('.circle')
 
-  $(rows).each((row, rowElem) => {
-    $(rowElem).children('.circle').each((col, colElem) => {
-      $(colElem).text(game.board[row][col])
-    })
+  spaces.each((i, space) => {
+    let id = $(space).data('id')
+    $(space).text(game.board[id])
   })
 }
 

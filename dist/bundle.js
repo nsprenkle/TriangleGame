@@ -10366,6 +10366,7 @@ return jQuery;
 
 },{}],2:[function(require,module,exports){
 const movesets = require('./movesets')
+const spaces = require('./spaces')
 
 class Game {
   constructor () {
@@ -10373,34 +10374,28 @@ class Game {
   }
 
   reset () {
-    this.spaces = [[1], [2, 3], [4, 5, 6], [7, 8, 9, 10], [11, 12, 13, 14, 15]]
-    this.board = [[null], [2, 3], [4, 5, 6], [7, 8, 9, 10], [11, 12, 13, 14, 15]]
+    this.board = [null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
   }
 
   getPieceAtSpace (space) {
-    let coordinates = this.getCoordinatesForSpace(space)
-    return this.board[coordinates.row][coordinates.column]
+    return this.board[space]
   }
 
   /** Maps between a space number and the row/column indecies
-   * @param space {number} number 1-15 from the top point of the triangle down and left to right as below
+   * @param space {number} number 0-14 from the top point of the triangle down and left to right as below
    *
-   *       [1],
-   *      [2, 3],
-   *     [4, 5, 6],
-   *   [7, 8, 9, 10],
-   * [11, 12, 13, 14, 15]
+   *       [0],
+   *      [1, 2],
+   *     [3, 4, 5],
+   *   [6, 7, 8, 9],
+   * [10, 11, 12, 13, 14]
    *
    * Rows/columns are 0 indexed and similarly flow top to bottom and left to right
    *
    * @returns object with row and col properties
    */
   getCoordinatesForSpace (space) {
-    let row = this.spaces.findIndex((row, i) => {
-      return row.indexOf(space) !== -1
-    })
-    let column = this.spaces[row].indexOf(space)
-
+    let { row, column } = spaces[space]
     return { row, column }
   }
 
@@ -10443,10 +10438,7 @@ class Game {
     }
 
     // Move the start piece to the end piece
-    const end = this.getCoordinatesForSpace(endSpace)
-    const start = this.getCoordinatesForSpace(startSpace)
-
-    this.board[end.row][end.column] = this.board[start.row][start.column]
+    this.board[endSpace] = this.board[startSpace]
     this.remove(startSpace)
     this.remove(validMove.jump)
 
@@ -10457,21 +10449,19 @@ class Game {
    * @returns whether or not a piece existed in the spot before and could be removed
    */
   remove (piece) {
-    piece = this.getCoordinatesForSpace(piece)
-
-    if (this.board[piece.row][piece.column] == null) {
+    if (this.board[piece] == null) {
       console.error('Invalid remove: no piece to remove')
       return false
     }
 
-    this.board[piece.row][piece.column] = null
+    this.board[piece] = null
     return true
   }
 }
 
 module.exports = Game
 
-},{"./movesets":4}],3:[function(require,module,exports){
+},{"./movesets":4,"./spaces":5}],3:[function(require,module,exports){
 let Game = require('./game.js')
 let $ = require('jquery')
 
@@ -10479,12 +10469,11 @@ let game = new Game()
 drawBoard()
 
 function drawBoard () {
-  let rows = $('.row')
+  let spaces = $('.circle')
 
-  $(rows).each((row, rowElem) => {
-    $(rowElem).children('.circle').each((col, colElem) => {
-      $(colElem).text(game.board[row][col])
-    })
+  spaces.each((i, space) => {
+    let id = $(space).data('id')
+    $(space).text(game.board[id])
   })
 }
 
@@ -10535,21 +10524,40 @@ module.exports = { selectPiece, move, drawBoard }
 
 },{"./game.js":2,"jquery":1}],4:[function(require,module,exports){
 module.exports = {
-  1: [{ jump: 2, end: 4 }, { jump: 3, end: 6 }],
+  0: [{ jump: 1, end: 3 }, { jump: 2, end: 5 }],
+  1: [{ jump: 3, end: 6 }, { jump: 4, end: 8 }],
   2: [{ jump: 4, end: 7 }, { jump: 5, end: 9 }],
-  3: [{ jump: 5, end: 8 }, { jump: 6, end: 10 }],
-  4: [{ jump: 2, end: 1 }, { jump: 5, end: 6 }, { jump: 7, end: 11 }, { jump: 8, end: 13 }],
-  5: [{ jump: 8, end: 12 }, { jump: 9, end: 14 }],
-  6: [{ jump: 3, end: 1 }, { jump: 5, end: 4 }, { jump: 9, end: 13 }, { jump: 10, end: 15 }],
+  3: [{ jump: 1, end: 0 }, { jump: 4, end: 5 }, { jump: 6, end: 10 }, { jump: 7, end: 12 }],
+  4: [{ jump: 7, end: 11 }, { jump: 8, end: 13 }],
+  5: [{ jump: 2, end: 0 }, { jump: 4, end: 3 }, { jump: 8, end: 12 }, { jump: 9, end: 14 }],
+  6: [{ jump: 3, end: 1 }, { jump: 7, end: 8 }],
   7: [{ jump: 4, end: 2 }, { jump: 8, end: 9 }],
-  8: [{ jump: 5, end: 3 }, { jump: 9, end: 10 }],
+  8: [{ jump: 4, end: 1 }, { jump: 7, end: 6 }],
   9: [{ jump: 5, end: 2 }, { jump: 8, end: 7 }],
-  10: [{ jump: 6, end: 3 }, { jump: 9, end: 8 }],
+  10: [{ jump: 6, end: 3 }, { jump: 11, end: 12 }],
   11: [{ jump: 7, end: 4 }, { jump: 12, end: 13 }],
-  12: [{ jump: 8, end: 5 }, { jump: 13, end: 14 }],
-  13: [{ jump: 8, end: 4 }, { jump: 9, end: 6 }],
-  14: [{ jump: 9, end: 5 }, { jump: 13, end: 12 }],
-  15: [{ jump: 10, end: 6 }, { jump: 14, end: 13 }]
+  12: [{ jump: 7, end: 3 }, { jump: 8, end: 5 }],
+  13: [{ jump: 8, end: 4 }, { jump: 12, end: 11 }],
+  14: [{ jump: 9, end: 5 }, { jump: 13, end: 12 }]
+}
+
+},{}],5:[function(require,module,exports){
+module.exports = {
+  0: { row: 0, column: 0 },
+  1: { row: 1, column: 0 },
+  2: { row: 1, column: 1 },
+  3: { row: 2, column: 0 },
+  4: { row: 2, column: 1 },
+  5: { row: 2, column: 2 },
+  6: { row: 3, column: 0 },
+  7: { row: 3, column: 1 },
+  8: { row: 3, column: 2 },
+  9: { row: 3, column: 3 },
+  10: { row: 4, column: 0 },
+  11: { row: 4, column: 1 },
+  12: { row: 4, column: 2 },
+  13: { row: 4, column: 3 },
+  14: { row: 4, column: 4 }
 }
 
 },{}]},{},[3]);

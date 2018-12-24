@@ -1,4 +1,5 @@
 const movesets = require('./movesets')
+const spaces = require('./spaces')
 
 class Game {
   constructor () {
@@ -6,34 +7,28 @@ class Game {
   }
 
   reset () {
-    this.spaces = [[1], [2, 3], [4, 5, 6], [7, 8, 9, 10], [11, 12, 13, 14, 15]]
-    this.board = [[null], [2, 3], [4, 5, 6], [7, 8, 9, 10], [11, 12, 13, 14, 15]]
+    this.board = [null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
   }
 
   getPieceAtSpace (space) {
-    let coordinates = this.getCoordinatesForSpace(space)
-    return this.board[coordinates.row][coordinates.column]
+    return this.board[space]
   }
 
   /** Maps between a space number and the row/column indecies
-   * @param space {number} number 1-15 from the top point of the triangle down and left to right as below
+   * @param space {number} number 0-14 from the top point of the triangle down and left to right as below
    *
-   *       [1],
-   *      [2, 3],
-   *     [4, 5, 6],
-   *   [7, 8, 9, 10],
-   * [11, 12, 13, 14, 15]
+   *       [0],
+   *      [1, 2],
+   *     [3, 4, 5],
+   *   [6, 7, 8, 9],
+   * [10, 11, 12, 13, 14]
    *
    * Rows/columns are 0 indexed and similarly flow top to bottom and left to right
    *
    * @returns object with row and col properties
    */
   getCoordinatesForSpace (space) {
-    let row = this.spaces.findIndex((row, i) => {
-      return row.indexOf(space) !== -1
-    })
-    let column = this.spaces[row].indexOf(space)
-
+    let { row, column } = spaces[space]
     return { row, column }
   }
 
@@ -76,10 +71,7 @@ class Game {
     }
 
     // Move the start piece to the end piece
-    const end = this.getCoordinatesForSpace(endSpace)
-    const start = this.getCoordinatesForSpace(startSpace)
-
-    this.board[end.row][end.column] = this.board[start.row][start.column]
+    this.board[endSpace] = this.board[startSpace]
     this.remove(startSpace)
     this.remove(validMove.jump)
 
@@ -90,14 +82,12 @@ class Game {
    * @returns whether or not a piece existed in the spot before and could be removed
    */
   remove (piece) {
-    piece = this.getCoordinatesForSpace(piece)
-
-    if (this.board[piece.row][piece.column] == null) {
+    if (this.board[piece] == null) {
       console.error('Invalid remove: no piece to remove')
       return false
     }
 
-    this.board[piece.row][piece.column] = null
+    this.board[piece] = null
     return true
   }
 }
