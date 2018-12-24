@@ -1,5 +1,4 @@
 const movesets = require('./movesets')
-const spaces = require('./spaces')
 
 class Game {
   constructor () {
@@ -10,41 +9,21 @@ class Game {
     this.board = [null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
   }
 
-  getPieceAtSpace (space) {
-    return this.board[space]
-  }
-
-  /** Maps between a space number and the row/column indecies
-   * @param space {number} number 0-14 from the top point of the triangle down and left to right as below
+  /** Move a piece from start space to end space
+   * @param startSpace the index of the space to move from
+   * @param endSpace the index of the space to move to
    *
-   *       [0],
-   *      [1, 2],
-   *     [3, 4, 5],
-   *   [6, 7, 8, 9],
-   * [10, 11, 12, 13, 14]
-   *
-   * Rows/columns are 0 indexed and similarly flow top to bottom and left to right
-   *
-   * @returns object with row and col properties
+   * @returns true for a successful move, false for a bad move, logs error
    */
-  getCoordinatesForSpace (space) {
-    let { row, column } = spaces[space]
-    return { row, column }
-  }
-
-  getSpaceForCoordinates (coordinates) {
-    return this.spaces[coordinates.row][coordinates.column]
-  }
-
   move (startSpace, endSpace) {
     // Start piece should exist
-    if (!this.getPieceAtSpace(startSpace)) {
+    if (!this.board[startSpace]) {
       console.error('Invalid move: no start piece')
       return false
     }
 
     // End piece should not exist
-    if (this.getPieceAtSpace(endSpace)) {
+    if (this.board[endSpace]) {
       console.error('Invalid move: end space occupied')
       return false
     }
@@ -65,7 +44,7 @@ class Game {
     console.log(`Found valid move: ${startSpace} to ${endSpace}, jumping ${validMove.jump}`)
 
     // Jump piece should exist
-    if (!this.getPieceAtSpace(validMove.jump)) {
+    if (!this.board[validMove.jump]) {
       console.error('Invalid move: no jump piece')
       return false
     }

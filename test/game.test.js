@@ -16,8 +16,8 @@ describe('Move', () => {
   it('Can jump in same row, left to right', () => {
     game.remove(5)
     expect(game.move(3, 5)).toBeTruthy()
-    expect(game.getPieceAtSpace(3)).toBeNull()
-    expect(game.getPieceAtSpace(4)).toBeNull()
+    expect(game.board[3]).toBeNull()
+    expect(game.board[4]).toBeNull()
   })
 
   it('Can jump in same row, right to left', () => {
@@ -75,28 +75,10 @@ describe('Move', () => {
 })
 
 test('Remove takes a piece from the board', () => {
-  expect(game.getPieceAtSpace(2)).not.toBeNull()
+  expect(game.board[2]).not.toBeNull()
   expect(game.remove(2)).toBeTruthy()
-  expect(game.getPieceAtSpace(2)).toBeNull()
+  expect(game.board[2]).toBeNull()
 
   // Can't remove a piece that already is removed
   expect(game.remove(2)).toBeFalsy()
-})
-
-test('Get coordinates by space', () => {
-  expect(game.getCoordinatesForSpace(0)).toEqual({ row: 0, column: 0 })
-  expect(game.getCoordinatesForSpace(1)).toEqual({ row: 1, column: 0 })
-  expect(game.getCoordinatesForSpace(2)).toEqual({ row: 1, column: 1 })
-  expect(game.getCoordinatesForSpace(3)).toEqual({ row: 2, column: 0 })
-  expect(game.getCoordinatesForSpace(4)).toEqual({ row: 2, column: 1 })
-  expect(game.getCoordinatesForSpace(5)).toEqual({ row: 2, column: 2 })
-  expect(game.getCoordinatesForSpace(6)).toEqual({ row: 3, column: 0 })
-  expect(game.getCoordinatesForSpace(7)).toEqual({ row: 3, column: 1 })
-  expect(game.getCoordinatesForSpace(8)).toEqual({ row: 3, column: 2 })
-  expect(game.getCoordinatesForSpace(9)).toEqual({ row: 3, column: 3 })
-  expect(game.getCoordinatesForSpace(10)).toEqual({ row: 4, column: 0 })
-  expect(game.getCoordinatesForSpace(11)).toEqual({ row: 4, column: 1 })
-  expect(game.getCoordinatesForSpace(12)).toEqual({ row: 4, column: 2 })
-  expect(game.getCoordinatesForSpace(13)).toEqual({ row: 4, column: 3 })
-  expect(game.getCoordinatesForSpace(14)).toEqual({ row: 4, column: 4 })
 })

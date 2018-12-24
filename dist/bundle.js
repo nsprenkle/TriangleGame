@@ -10366,7 +10366,6 @@ return jQuery;
 
 },{}],2:[function(require,module,exports){
 const movesets = require('./movesets')
-const spaces = require('./spaces')
 
 class Game {
   constructor () {
@@ -10377,41 +10376,21 @@ class Game {
     this.board = [null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
   }
 
-  getPieceAtSpace (space) {
-    return this.board[space]
-  }
-
-  /** Maps between a space number and the row/column indecies
-   * @param space {number} number 0-14 from the top point of the triangle down and left to right as below
+  /** Move a piece from start space to end space
+   * @param startSpace the index of the space to move from
+   * @param endSpace the index of the space to move to
    *
-   *       [0],
-   *      [1, 2],
-   *     [3, 4, 5],
-   *   [6, 7, 8, 9],
-   * [10, 11, 12, 13, 14]
-   *
-   * Rows/columns are 0 indexed and similarly flow top to bottom and left to right
-   *
-   * @returns object with row and col properties
+   * @returns true for a successful move, false for a bad move, logs error
    */
-  getCoordinatesForSpace (space) {
-    let { row, column } = spaces[space]
-    return { row, column }
-  }
-
-  getSpaceForCoordinates (coordinates) {
-    return this.spaces[coordinates.row][coordinates.column]
-  }
-
   move (startSpace, endSpace) {
     // Start piece should exist
-    if (!this.getPieceAtSpace(startSpace)) {
+    if (!this.board[startSpace]) {
       console.error('Invalid move: no start piece')
       return false
     }
 
     // End piece should not exist
-    if (this.getPieceAtSpace(endSpace)) {
+    if (this.board[endSpace]) {
       console.error('Invalid move: end space occupied')
       return false
     }
@@ -10432,7 +10411,7 @@ class Game {
     console.log(`Found valid move: ${startSpace} to ${endSpace}, jumping ${validMove.jump}`)
 
     // Jump piece should exist
-    if (!this.getPieceAtSpace(validMove.jump)) {
+    if (!this.board[validMove.jump]) {
       console.error('Invalid move: no jump piece')
       return false
     }
@@ -10461,7 +10440,7 @@ class Game {
 
 module.exports = Game
 
-},{"./movesets":4,"./spaces":5}],3:[function(require,module,exports){
+},{"./movesets":4}],3:[function(require,module,exports){
 let Game = require('./game.js')
 let $ = require('jquery')
 
@@ -10492,7 +10471,7 @@ function selectPiece (selector) {
     $(selector).addClass('selected')
   }
 
-  if (!moveFrom) {
+  if (moveFrom == null) {
     moveFrom = space
   } else {
     moveTo = space
@@ -10539,25 +10518,6 @@ module.exports = {
   12: [{ jump: 7, end: 3 }, { jump: 8, end: 5 }],
   13: [{ jump: 8, end: 4 }, { jump: 12, end: 11 }],
   14: [{ jump: 9, end: 5 }, { jump: 13, end: 12 }]
-}
-
-},{}],5:[function(require,module,exports){
-module.exports = {
-  0: { row: 0, column: 0 },
-  1: { row: 1, column: 0 },
-  2: { row: 1, column: 1 },
-  3: { row: 2, column: 0 },
-  4: { row: 2, column: 1 },
-  5: { row: 2, column: 2 },
-  6: { row: 3, column: 0 },
-  7: { row: 3, column: 1 },
-  8: { row: 3, column: 2 },
-  9: { row: 3, column: 3 },
-  10: { row: 4, column: 0 },
-  11: { row: 4, column: 1 },
-  12: { row: 4, column: 2 },
-  13: { row: 4, column: 3 },
-  14: { row: 4, column: 4 }
 }
 
 },{}]},{},[3]);
