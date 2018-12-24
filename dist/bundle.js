@@ -10483,6 +10483,14 @@ let remainingMoves = []
 drawBoard()
 getRemainingMoves()
 
+$('#reset').on('click', reset)
+
+function reset () {
+  game.reset()
+  drawBoard()
+  getRemainingMoves()
+}
+
 function drawBoard () {
   let spaces = $('.circle')
 
@@ -10552,7 +10560,7 @@ function clearSelection () {
   $('.circle').removeClass('selected')
 }
 
-module.exports = { selectPiece, move, drawBoard }
+module.exports = { reset, selectPiece, move, drawBoard }
 
 },{"./game.js":2,"jquery":1}],4:[function(require,module,exports){
 module.exports = {
