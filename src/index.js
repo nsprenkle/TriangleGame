@@ -1,8 +1,12 @@
 let Game = require('./game.js')
 let $ = require('jquery')
 
+// Initialize page
 let game = new Game()
+let remainingMoves = []
+
 drawBoard()
+getRemainingMoves()
 
 function drawBoard () {
   let spaces = $('.circle')
@@ -11,6 +15,11 @@ function drawBoard () {
     let id = $(space).data('id')
     $(space).text(game.board[id])
   })
+}
+
+function getRemainingMoves () {
+  remainingMoves = game.availableMoves()
+  $('#available-moves').text(JSON.stringify(remainingMoves))
 }
 
 let moveFrom, moveTo
@@ -36,6 +45,18 @@ function selectPiece (selector) {
   }
 
   drawBoard()
+  getRemainingMoves()
+  checkWinLose()
+}
+
+function checkWinLose () {
+  if (remainingMoves.length === 0) {
+    if (game.piecesLeft() === 1) {
+      window.alert('You win!')
+    } else {
+      window.alert('No moves left, you lost')
+    }
+  }
 }
 
 function move () {
