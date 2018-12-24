@@ -3,19 +3,13 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Triangle Game</title>
+  <title>Triangle Peg Game</title>
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 
 <body>
 
-  <h1>The <span id="titleDisplay">Triangle</span> Game</h1>
-
-  <div id="stripe">
-    <button class="btn" id="reset"></button>
-  </div>
-
-  <div class="triangle">
+  <div id="board">
 
     <div class="wrapper">
 
@@ -55,7 +49,9 @@
 
   </div>
 
-  <details>
+  <button id="reset">Reset</button>
+
+  <details id="debug">
     <summary>Debug</summary>
     <div id='available-moves'></div>
   </details>
