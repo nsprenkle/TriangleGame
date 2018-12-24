@@ -82,3 +82,13 @@ test('Remove takes a piece from the board', () => {
   // Can't remove a piece that already is removed
   expect(game.remove(2)).toBeFalsy()
 })
+
+test('Pieces left counts number of remaining pieces', () => {
+  expect(game.piecesLeft()).toBe(14)
+  game.remove(1)
+  expect(game.piecesLeft()).toBe(13)
+})
+
+test('Available moves', () => {
+  expect(game.availableMoves()).toHaveLength(2)
+})
