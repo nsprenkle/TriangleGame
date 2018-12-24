@@ -28,7 +28,7 @@ function selectPiece (selector) {
     $(selector).addClass('selected')
   }
 
-  if (!moveFrom) {
+  if (moveFrom == null) {
     moveFrom = space
   } else {
     moveTo = space
