@@ -11,7 +11,7 @@ module.exports = {
   9: [{ jump: 5, end: 2 }, { jump: 8, end: 7 }],
   10: [{ jump: 6, end: 3 }, { jump: 11, end: 12 }],
   11: [{ jump: 7, end: 4 }, { jump: 12, end: 13 }],
-  12: [{ jump: 7, end: 3 }, { jump: 8, end: 5 }],
+  12: [{ jump: 7, end: 3 }, { jump: 8, end: 5 }, { jump: 11, end: 10 }, { jump: 13, end: 14 }],
   13: [{ jump: 8, end: 4 }, { jump: 12, end: 11 }],
   14: [{ jump: 9, end: 5 }, { jump: 13, end: 12 }]
 }
