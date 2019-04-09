@@ -6,6 +6,10 @@ document.body.innerHTML =
     <div class="circle" data-id=1></div>
   </div>`
 
+beforeEach(() => {
+  uut.reset()
+})
+
 describe('selectPiece', () => {
   it('Clicking once selects the piece', () => {
     uut.selectPiece($('.circle').get(0))
@@ -16,9 +20,9 @@ describe('selectPiece', () => {
     const moveSpy = jest.fn()
     uut.move = moveSpy
 
-    $('.circle').addClass('selected')
-
     uut.selectPiece($('.circle').get(0))
+    uut.selectPiece($('.circle').get(0))
+
     expect($('.circle').hasClass('selected')).toBeFalsy()
     expect(moveSpy).not.toHaveBeenCalled()
   })

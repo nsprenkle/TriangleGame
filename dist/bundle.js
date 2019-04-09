@@ -10488,6 +10488,7 @@ $('#reset').on('click', reset)
 function reset () {
   $('#reset').addClass('hidden')
   game.reset()
+  clearSelection()
   drawBoard()
   getRemainingMoves()
 }
@@ -10517,6 +10518,8 @@ function selectPiece (selector) {
 
   if (selected) {
     $(selector).removeClass('selected')
+    moveFrom = null
+    return
   } else {
     $(selector).addClass('selected')
   }
