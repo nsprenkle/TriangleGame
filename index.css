@@ -61,10 +61,19 @@
   display: block;
   border-radius: 1rem;
   border: 1px solid darkgray;
+  cursor: pointer;
   margin: 2rem auto;
   box-sizing: border-box;
   padding: 1rem 2rem;
   transition: all 0.2s;
+}
+
+#reset:hover {
+  opacity: 0.75;
+}
+
+#reset.hidden {
+  visibility: hidden;
 }
 
 #debug {

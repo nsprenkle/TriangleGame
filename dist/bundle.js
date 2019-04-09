@@ -10486,6 +10486,7 @@ getRemainingMoves()
 $('#reset').on('click', reset)
 
 function reset () {
+  $('#reset').addClass('hidden')
   game.reset()
   drawBoard()
   getRemainingMoves()
@@ -10548,6 +10549,8 @@ function move () {
 
   if (!validMove) {
     window.alert(`Invalid move ${moveFrom} to ${moveTo}`)
+  } else {
+    $('#reset').removeClass('hidden')
   }
 
   clearSelection()
